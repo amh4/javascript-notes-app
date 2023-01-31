@@ -9,6 +9,7 @@ class NotesView{
       const content = document.querySelector('#note-input').value;
       this.model.addNote(content)
       this.displayNotes();
+      document.getElementById("note-input").value = "";
     })
   }
 
