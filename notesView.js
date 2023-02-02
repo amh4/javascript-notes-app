@@ -1,13 +1,13 @@
 class NotesView{
-  constructor(model){
+  constructor(model, client){
     this.model = model;
+    this.client = client;
     this.mainContainerEl = document.querySelector('#main-container');
     this.addButtonEl = document.querySelector('#add-note-button');
 
-
     this.addButtonEl.addEventListener('click', () => {
       const content = document.querySelector('#note-input').value;
-      this.model.addNote(content)
+      this.model.addNote(content);
       this.displayNotes();
       document.getElementById("note-input").value = "";
     })
@@ -23,6 +23,14 @@ class NotesView{
       noteEl.innerText = note;
       noteEl.className = 'note';
       this.mainContainerEl.append(noteEl);
+    })
+  }
+
+  displayNotesFromApi(){
+    this.client.loadNotes()
+    .then((notes) => {
+      this.model.setNotes(notes);
+      this.displayNotes();
     })
   }
 }
