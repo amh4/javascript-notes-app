@@ -12,11 +12,11 @@ class NotesClient {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify({content: data}),
     })
     .then((response) => response.json())
     .then((data) => {
-      console.log('Success:', data);
+      console.log(data);
     })
     .catch((error) => {
       console.error('Error:', error);

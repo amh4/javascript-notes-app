@@ -7,8 +7,8 @@ class NotesView{
 
     this.addButtonEl.addEventListener('click', () => {
       const content = document.querySelector('#note-input').value;
-      this.model.addNote(content);
-      this.displayNotes();
+      this.client.createNote(content)
+      this.displayNotesFromApi();
       document.getElementById("note-input").value = "";
     })
   }
